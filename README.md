@@ -22,3 +22,12 @@ Last but not least, in the "Following" section the user is able to view all the 
 
 ### How to run
 
+In order to run the app locally on your desktop,follow these steps:
+
+1. Clone the repository to you local terminal.
+2. Navigate to the project folder using the command-line(or powershell for Windows users).
+3. Install the required dependencies(assuming python is already installed) using the command ```pip install -r requirements.txt```
+4. Start the app using the command ```python manage.py runserver```. If the local server has started successfully you should see a message saying "Starting development server at http://127.0.0.1:8000/" amongst the rest of the message.
+5. Open a web browser and type the following URL ```http://127.0.0.1:8000/```. If all the previous steps are executed correctly, you should be able to see a live demo of the webpage.
+6. Have fun!
+
