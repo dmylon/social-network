@@ -1,0 +1,40 @@
+{% extends "network/layout.html" %}
+
+{% load static %}
+
+{% block title %} {{profile.user.username}} Profile Page {% endblock %}
+
+{% block script %}
+    <script>
+        whiteImgPath = "{% static 'network/white_heart.svg.png' %}";
+        redImgPath = "{% static 'network/red_heart.svg.png' %}";
+        id = "{{profile.user.id}}";
+        const username = "{{user.username}}";
+        const userf = "{{profile.user.username}}";
+    </script>
+
+{% endblock %}
+
+{% block body %}
+    <div class="profile-details-container">
+    <h1>{{profile.user.username}}</h1>
+    </div>
+    <div class="profile-details-container" style="margin-top:-5vh;"><h6 style="font-size:17px;"><label id="followers">{{profile_user.followers.count}}</label>  Followers | {{profile.following.count}} Following</h6></div>
+    {% if profile.user != user %}
+        <div class="profile-details-container" style="margin-top:-3vh"><button class="btn btn-primary" id="follow-button" style="width:10vw;height:6vh;
+        font-size:20px;font-weight:bold;background-color: #e40400;border:none;">{{follow_status}}</button></div>
+    {% endif %}
+    <div id="post-view">
+    </div>
+
+    <div class="profile-details-container">
+        <form method="GET" action="{% url 'viewProfile' profile.user.username %}">
+            <input id="previous" class="arrow-btn" type="submit" value="←" style="font-weight:bold">
+            <label class="num-label">{{page_num}}</label>
+            <input type="hidden" id="page" name="page" value="{{page_num}}">
+            <input id="next" class="arrow-btn" type="submit" value="→">
+        </form>
+    </div>
+    <script src="{% static 'network/loadPosts.js' %}"></script>
+    <script type="module" src="{% static 'network/profile.js' %}"></script>
+{% endblock %}

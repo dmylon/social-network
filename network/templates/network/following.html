@@ -1,0 +1,36 @@
+{% extends "network/layout.html" %}
+
+{% load static %}
+
+{% block title %} Following {% endblock %}
+
+{% block script %}
+    <script>
+        whiteImgPath = "{% static 'network/white_heart.svg.png' %}";
+        redImgPath = "{% static 'network/red_heart.svg.png' %}";
+        const username = "{{user.username}}";
+    </script>
+
+{% endblock %}
+
+{% block body %}
+    <div class="profile-details-container">
+        <h1>Posts from people you follow</h1>
+    </div>
+    <div id="post-view">
+    </div>
+
+    {% if noPosts%}
+        <div class="profile-details-container">No posts were found</div>
+    {% endif %}
+    <div class="profile-details-container">
+        <form method="GET" action="{% url 'viewFollowing'%}">
+            <input id="previous" class="arrow-btn" type="submit" value="←">
+            <label class="num-label">{{page_num}}</label>
+            <input type="hidden" id="page" name="page" value="{{page_num}}">
+            <input id="next" class="arrow-btn" type="submit" value="→">
+        </form>
+    </div>
+    <script src="{% static 'network/loadPosts.js' %}"></script>
+    <script type="module" src="{% static 'network/following.js' %}"></script>
+{% endblock %}

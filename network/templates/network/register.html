@@ -1,0 +1,30 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+<div class="login-container">
+    <h2 class="login-title">Sign Up to ChitChat</h2>
+
+    {% if message %}
+        <div>{{ message }}</div>
+    {% endif %}
+
+    <form action="{% url 'register' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <input class="form-elements" autofocus type="text" name="username" placeholder="Username" required>
+        </div>
+        <div class="form-group">
+            <input class="form-elements" type="email" name="email" placeholder="Email Address" required>
+        </div>
+        <div class="form-group">
+            <input class="form-elements" type="password" name="password" placeholder="Password" required>
+        </div>
+        <div class="form-group">
+            <input class="form-elements" type="password" name="confirmation" placeholder="Confirm Password" required>
+        </div>
+        <input class="login-btn" type="submit" value="Register">
+    </form>
+
+    Already have an account? <a href="{% url 'login' %}">Log In here.</a>
+    </div>
+{% endblock %}

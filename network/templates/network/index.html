@@ -1,0 +1,38 @@
+{% extends "network/layout.html" %}
+
+{% load static %}
+
+{% block script %}
+    <script>
+        const whiteImgPath = "{% static 'network/white_heart.svg.png' %}";
+        const redImgPath = "{% static 'network/red_heart.svg.png' %}";
+        const username = "{{user.username}}";
+    </script>
+{% endblock %}
+
+{% block body %}
+    
+    {% if request.user.is_authenticated %}
+        <div class="post-container" style="border:none;margin-left:19vw;background-color:rgb(239, 239, 239);">
+            <h3 style="margin-top:6vh;margin-bottom: 20px;">New Post</h3>
+            <form id="new_post">
+                <textarea class="form-control" placeholder="What are you thinking?" style="margin-bottom:3vh;height:10vh" id="content"></textarea>
+                <input class="btn btn-primary" type="submit" value="Create Post" style="width:10vw;height:6vh;font-weight:bold;font-size:20px"/>
+            </form>
+        </div>
+    <h1 style="margin-left:20vw;margin-bottom:3vh">All Posts</h1>
+    <div id="post-view">
+    </div>
+    <div class="profile-details-container">
+        <form method="GET" action="{% url 'index'%}">
+            <input id="previous" class="arrow-btn" type="submit" value="←">
+            <label class="num-label">{{page_num}}</label>
+            <input type="hidden" id="page" name="page" value="{{page_num}}">
+            <input id="next" class="arrow-btn" type="submit" value="→">
+        </form>
+    </div>
+    <script src="{% static 'network/loadPosts.js' %}"></script>
+    <script type="module" src="{% static 'network/index.js' %}"></script>
+    {% endif %}
+
+{% endblock %}
