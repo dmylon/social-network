@@ -16,3 +16,9 @@ When clicking in a username, a profile page is shown, containing the number of f
 
 ![Screenshot_17](https://user-images.githubusercontent.com/47897459/229608645-a00ec404-8805-4c04-a6c7-3035689be4bf.png)
 
+Last but not least, in the "Following" section the user is able to view all the posts a webpage containing all the posts from the people that the user has selected to follow.
+
+![Screenshot_18](https://user-images.githubusercontent.com/47897459/229614023-65d3d9cb-ba04-42f6-9dcc-e8aa68dca3ad.png)
+
+### How to run
+
